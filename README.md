@@ -24,15 +24,16 @@ Jika Anda mengalami error seperti `ClassNotFoundException: org.hibernate.dialect
 
 ## Daftar Isi
 1. [Deskripsi Proyek](#deskripsi-proyek)
-2. [Struktur Proyek](#struktur-proyek)
-3. [Persiapan Lingkungan](#persiapan-lingkungan)
-4. [Konfigurasi Database](#konfigurasi-database)
-5. [Entitas yang Telah Disediakan (User)](#entitas-yang-telah-disediakan-user)
-6. [Tugas Mahasiswa: Melengkapi 4 Entitas](#tugas-mahasiswa-melengkapi-4-entitas)
-7. [Cara Menjalankan Aplikasi](#cara-menjalankan-aplikasi)
-8. [Pengujian API dengan Postman](#pengujian-api-dengan-postman)
-9. [Tugas Praktikum Lanjutan](#tugas-praktikum-lanjutan)
-10. [Kesimpulan](#kesimpulan)
+2. [Struktur Proyek (Awal)](#struktur-proyek-awal)
+3. [Struktur Folder Lengkap yang Diharapkan](#struktur-folder-lengkap-yang-diharapkan)
+4. [Persiapan Lingkungan](#persiapan-lingkungan)
+5. [Konfigurasi Database](#konfigurasi-database)
+6. [Entitas yang Telah Disediakan (User)](#entitas-yang-telah-disediakan-user)
+7. [Tugas Mahasiswa: Melengkapi 4 Entitas](#tugas-mahasiswa-melengkapi-4-entitas)
+8. [Cara Menjalankan Aplikasi](#cara-menjalankan-aplikasi)
+9. [Pengujian API dengan Postman](#pengujian-api-dengan-postman)
+10. [Tugas Praktikum Lanjutan](#tugas-praktikum-lanjutan)
+11. [Kesimpulan](#kesimpulan)
 
 ---
 
@@ -49,26 +50,89 @@ Setiap entitas harus memiliki **CRUD lengkap** (GET, POST, PUT, DELETE) serta mi
 
 ---
 
-## Struktur Proyek
+## Struktur Proyek (Awal)
+
+Saat ini (sebelum tugas dikerjakan), struktur proyek hanya memiliki entitas **User**:
 
 ```
 module5/
 ├── src/main/java/com/wsb/module5/
 │   ├── controller/
-│   │   └── UserController.java          => sudah ada
+│   │   └── UserController.java          ✅ sudah ada
 │   ├── model/
-│   │   └── User.java                    => sudah ada
+│   │   └── User.java                    ✅ sudah ada
 │   ├── repository/
-│   │   └── UserRepository.java          => sudah ada (dengan custom query)
+│   │   └── UserRepository.java          ✅ sudah ada (dengan custom query)
 │   ├── service/
-│   │   └── UserService.java             => sudah ada
+│   │   └── UserService.java             ✅ sudah ada
 │   └── Module5Application.java          (main class)
 ├── src/main/resources/
-│   └── application.properties           => konfigurasi database
-└── pom.xml                              => perlu diperbaiki (lihat peringatan)
+│   └── application.properties           ✅ konfigurasi database
+└── pom.xml                              ⚠️ perlu diperbaiki (lihat peringatan)
 ```
 
 > **Catatan:** Mahasiswa harus menambahkan package `model`, `repository`, `service`, `controller` untuk entitas **Product**, **Order**, **Category**, **Review** dengan pola yang sama seperti User.
+
+---
+
+## Struktur Folder Lengkap yang Diharapkan
+
+Setelah mahasiswa menyelesaikan tugas (menambahkan Product, Order, Category, Review), struktur proyek akhir akan terlihat seperti di bawah ini. **Inilah target yang harus dicapai.**
+
+```
+module5/
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/
+│   │   │       └── wsb/
+│   │   │           └── module5/
+│   │   │               ├── Module5Application.java
+│   │   │               ├── controller/
+│   │   │               │   ├── UserController.java          ✅
+│   │   │               │   ├── ProductController.java       ❌ perlu dibuat
+│   │   │               │   ├── OrderController.java         ❌ perlu dibuat
+│   │   │               │   ├── CategoryController.java      ❌ perlu dibuat
+│   │   │               │   └── ReviewController.java        ❌ perlu dibuat
+│   │   │               ├── model/
+│   │   │               │   ├── User.java                    ✅
+│   │   │               │   ├── Product.java                 ❌ perlu dibuat
+│   │   │               │   ├── Order.java                   ❌ perlu dibuat
+│   │   │               │   ├── Category.java                ❌ perlu dibuat
+│   │   │               │   └── Review.java                  ❌ perlu dibuat
+│   │   │               ├── repository/
+│   │   │               │   ├── UserRepository.java          ✅
+│   │   │               │   ├── ProductRepository.java       ❌ perlu dibuat
+│   │   │               │   ├── OrderRepository.java         ❌ perlu dibuat
+│   │   │               │   ├── CategoryRepository.java      ❌ perlu dibuat
+│   │   │               │   └── ReviewRepository.java        ❌ perlu dibuat
+│   │   │               └── service/
+│   │   │                   ├── UserService.java             ✅
+│   │   │                   ├── ProductService.java          ❌ perlu dibuat
+│   │   │                   ├── OrderService.java            ❌ perlu dibuat
+│   │   │                   ├── CategoryService.java         ❌ perlu dibuat
+│   │   │                   └── ReviewService.java           ❌ perlu dibuat
+│   │   └── resources/
+│   │       └── application.properties
+│   └── test/
+│       └── java/...
+├── .gitignore
+├── HELP.md
+├── mvnw
+├── mvnw.cmd
+├── pom.xml
+└── README.md
+```
+
+**Keterangan:**  
+- ✅ = sudah disediakan  
+- ❌ = harus dibuat oleh mahasiswa  
+
+Setiap entitas yang baru harus mengikuti pola yang sama seperti **User** (CRUD + custom query). Controller untuk masing-masing entitas memiliki endpoint REST dengan base path:  
+- `/api/products`  
+- `/api/orders`  
+- `/api/categories`  
+- `/api/reviews`
 
 ---
 
@@ -106,6 +170,8 @@ spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 ---
 
 ## Entitas yang Telah Disediakan (User)
+
+Sebagai referensi, berikut implementasi lengkap entitas **User** yang sudah jadi:
 
 ### Model (`User.java`)
 ```java
