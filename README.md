@@ -353,7 +353,7 @@ curl -X POST http://localhost:67/api/users -H "Content-Type: application/json" -
 
 ---
 
-## Tugas Praktikum Lanjutan (Nilai Tambahan)
+## Tugas Praktikum Lanjutan
 
 1. **Dokumentasi API dengan Swagger** – tambahkan dependensi `springdoc-openapi`.
 2. **Validasi Input** – gunakan `@NotBlank`, `@Min`, lalu `@Valid` di controller.
