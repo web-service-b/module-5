@@ -9,13 +9,13 @@
 
 ## ⚠️ Peringatan Penting
 
-Proyek ini menggunakan **Spring Boot versi 4.0.6** (tidak stabil).  
-**Disarankan untuk downgrade ke versi stabil 3.2.5** sebelum memulai:
+Proyek ini menggunakan **Spring Boot versi 4.0.6**. Saat ini berjalan normal dan aman.
+
+Namun, jika Anda mengalami error seperti `ClassNotFoundException: org.hibernate.dialect.MySQL8Dialect` atau kendala lain yang terkait dengan versi, Anda dapat **downgrade ke versi stabil 3.2.5** dengan langkah berikut:
 
 1. Buka `pom.xml`, ubah `parent` version menjadi:
    ```xml
    <version>3.2.5</version>
-   ```
 2. Hapus dependensi `spring-boot-starter-data-jpa-test` dan `spring-boot-starter-webmvc-test`.
 3. Ganti `spring-boot-starter-webmvc` dengan `spring-boot-starter-web`.
 4. Reload Maven.
