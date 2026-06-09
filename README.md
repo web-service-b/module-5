@@ -1,7 +1,6 @@
 # Dokumentasi Proyek RESTful API - Web Services
 
 **Mata Kuliah:** Web Services  
-**Pertemuan ke:** 5  
 **Topik:** Tugas Membuat API dengan RESTful (10 Services)  
 **Nama Proyek:** `module5`  
 **Base URL:** `http://localhost:67`
